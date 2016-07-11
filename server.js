@@ -26,8 +26,8 @@ var db = process.env.MONGODB_URI || "mongodb://localhost//find_me_uni";
 mongoose.connect(db);
 
 //Controllers
-var studentsController = require('./controllers/students.js');
-app.use('/students', studentsController);
+var usersController = require('./controllers/users.js');
+app.use('/users', usersController);
 
 var seedsController = require('./controllers/seeds.js');
 app.use('/seeds', seedsController);
