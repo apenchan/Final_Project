@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 
 var schoolSchema = new mongoose.Schema({
-	img_src: String,
+	img: String,
 	name: String,
 	state: String,
 	zipCode: String,
