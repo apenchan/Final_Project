@@ -22,15 +22,15 @@ app.use(methodOverride(function(req, res){
 app.use(cookieParser());
 
 //DB
-var db = process.env.MONGODB_URI || "mongodb://localhost//find_me_uni";
+var db = process.env.MONGODB_URI || "mongodb://localhost/find_me_uni";
 mongoose.connect(db);
 
 //Controllers
 var usersController = require('./controllers/users.js');
 app.use('/users', usersController);
 
-var seedsController = require('./controllers/seeds.js');
-app.use('/seeds', seedsController);
+var seedController = require('./controllers/seeds.js');
+app.use('/seeds', seedController);
 
 var authController = require('./controllers/auth.js');
 app.use('/auth', authController);

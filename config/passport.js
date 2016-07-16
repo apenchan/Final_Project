@@ -1,4 +1,4 @@
-var User = require('..models/users.js');
+var User = require('../models/users.js');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var JwtStrategy = require('passport-jwt').Strategy;
@@ -17,7 +17,7 @@ JwtOpts.jwtFromRequest = function(req) {
 
 JwtOpts.secretOrKey = process.env.JWT_SECRET;
 
-passport.use(new JwtStrategy(JwtStrategy, function(jwt_payload, done){
+passport.use(new JwtStrategy(JwtOpts, function(jwt_payload, done){
 	console.log("JWT PAYLOAD" + util.inspect(jwt_payload));
 
 //see if we found the jwt token in browser
@@ -34,21 +34,21 @@ User.findOne({username: jwt_payload._doc.username}, function(err, user){
 	});
 }));
 
-passport.use (new LocalStrategy(
+passport.use( new LocalStrategy(
 	function(username, password, done) {
 		console.log("Let's find that username");
-		User.findOne ({username: username}, function(err, dbUser){
+		User.findOne ({username: username}, function( err, dbUser){
 			if (err) {
 				console.log("can't find username");
 				return done(err);
 			}
 			if (!dbUser){
-				return (done, false)
+				return (null, false)
 			}
 			if (!dbUser.authenticate(password)){
 				return done(null, false);
 			}
-			return (done, dbUser);
+			return (null, dbUser);
 		});
 	})
 );

@@ -1,5 +1,5 @@
 var express = require ('express');
-var router = express.Router;
+var router = express.Router();
 var passport = require('../config/passport.js');
 var User = require('../models/users.js');
 var jwt = require('jsonwebtoken');
@@ -12,7 +12,7 @@ router.get('/', function(req, res){
 });
 
 //lets get the following back if login is successful. post request ;)
-router.post('/', passport.authenticate('local' {session: false}), function(req, res, next){
+router.post('/', passport.authenticate('local', {session: false}), function(req, res, next){
 	console.log("the login seems to be successful. Let's celebrate");
 	console.log('req.body:' + req.body);
 
@@ -22,7 +22,7 @@ var token = jwt.sign(req.user, process.env.JWT_SECRET, {
 });
 
 console.log(token);
-res.json({"token: " + token});
+res.json({token: token});
 });
 
 module.exports = router;

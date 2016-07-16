@@ -1,16 +1,12 @@
 var mongoose = require('mongoose');
 
+//Before seeding, found a bug in nearby colleges API. Shows same colleges everytime, if you add top 25 & 72 counterpart
 var schoolSchema = new mongoose.Schema({
-	img: String,
 	name: String,
-	state: String,
-	zipCode: String,
-	undergradTotal: String,
 	sat25: String,
-	sat75: String,
+	// sat75: String,
 	act25: String,
-	act75: String,
-	website: String
+	// act75: String,
 });
 
 var School = mongoose.model('School', schoolSchema);
