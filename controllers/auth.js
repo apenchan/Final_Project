@@ -16,13 +16,13 @@ router.post('/', passport.authenticate('local', {session: false}), function(req,
 	console.log("the login seems to be successful. Let's celebrate");
 	console.log('req.body:' + req.body);
 
-//Expiration check
-var token = jwt.sign(req.user, process.env.JWT_SECRET, {
-	expiresIn: 1400
-});
+	//Expiration check
+	var token = jwt.sign(req.user, process.env.JWT_SECRET, {
+		expiresIn: 1400
+	});
 
-console.log(token);
-res.json({token: token});
+	console.log(token);
+	res.json({token: token});
 });
 
 module.exports = router;

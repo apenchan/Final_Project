@@ -1,7 +1,7 @@
-var express = require('express');
-var mongoose = require('mongoose');
-var db = process.env.MONGODB_URI || "mongodb://localhost/find_me_uni";
-var router = express.Router();
+// var express = require('express');
+// var mongoose = require('mongoose');
+// var db = process.env.MONGODB_URI || "mongodb://localhost/find_me_uni";
+// var router = express.Router();
 // var User = require('../models/users.js');
 // var School = require('../models/schools.js');
 
@@ -13,15 +13,15 @@ var router = express.Router();
 // 		password: "password",
 // 		state: "Florida",
 // 		zipCode: "33458",
-// 		satScore: "1200",
+// 		satScore: "1600",
 // 		actScore: "25",
 // 		savedSchools: []
 // 	});
 
 // 	var school1 = new School({
-// 		name: "Tulane University of Louisiana",
-// 		sat25: "1870",
-// 		act25: "29",
+// 		name: "University of Central Florida",
+// 		sat25: "1600",
+// 		act25: "23",
 // 	});
 
 // 	user1.save();

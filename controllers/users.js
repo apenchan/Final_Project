@@ -7,7 +7,7 @@ var request = require('request');
 var util = require('util'); 
 //requiring util from passport. this will help check if user is loggedin
 var nearbyColleges = process.env.NEARBY_COLLEGES_ID;
-console.log(nearbyColleges);
+
 
 //Let's Create a new user!
 router.post('/register', function (req, res){
@@ -18,6 +18,28 @@ router.post('/register', function (req, res){
 		}
 		res.send(true);
 	});
+});
+
+router.get('/search', function(req,res){   
+	// var schoolQuery = req.body.result;
+	console.log(req.body);
+	// deepPrint(ingredientQuery);
+  request("www.nearbycolleges.info/api/search?key=" + process.env.NEARBY_COLLEGES_ID + "&filter=tests.act25:<" + req.body.act25 + ",tests.sat25:<" + req.body.sat25, function(error, response, body){
+    if(!error && response.statusCode == 200){
+    	result = JSON.parse(body);
+    	res.send(result);
+    }
+  });
+});
+
+//Route w/ JWT token 
+router.use(passport.authenticate('jwt', { session: false }));
+
+//saved colleges by user profile
+router.get('/profile', function(req, res, next){
+	User.findById(req.user.id).then(function(user){
+		res.send(user);
+	}); 
 });
 
 module.exports = router;

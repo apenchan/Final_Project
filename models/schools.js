@@ -5,7 +5,7 @@ var schoolSchema = new mongoose.Schema({
 	name: String,
 	sat25: String,
 	// sat75: String,
-	act25: String,
+	act25: String
 	// act75: String,
 });
 
