@@ -1,0 +1,14 @@
+@font-face{
+	font-family: "ChampagneLimousines.ttf";
+	src: url(../fonts/ChampagneLimousines.ttf);
+}
+@font-face{
+	font-family: "LANENAR.ttf";
+	src: url(../fonts/LANENAR.ttf);
+}
+h2{
+	font-family: "ChampagneLimousines.ttf";
+}
+.website-blurb{
+	font-family: "LANENAR_.ttf";
+}
