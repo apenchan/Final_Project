@@ -6,9 +6,24 @@
 	font-family: "LANENAR.ttf";
 	src: url(../fonts/LANENAR.ttf);
 }
+.forms{
+	background-image: url("http://bit.ly/2aewftY");
+}
 h2{
 	font-family: "ChampagneLimousines.ttf";
+	font-size: 40px;
+	text-align: center;
 }
 .website-blurb{
-	font-family: "LANENAR_.ttf";
+	font-family: "LANENAR.ttf";
+	font-size: 20px;
+	text-align: center;
+}
+.login{
+	font-family: "ChampagneLimousines.ttf";
+	font-size: 20px;
+}
+.signup{
+	font-family: "ChampagneLimousines.ttf";
+	font-size: 20px;
 }

@@ -34,23 +34,23 @@ var ApplicationDisplay = React.createClass({
 		} else {
 		return (
  				<div className="forms">
-            <div className="signup"> 
-            	<div className="header">
-								<h2>Find Me Uni</h2>
-							</div>
-							<div className="website-blurb">
-							<p> Search through our catalogue of schools and find the unversity that fits your needs</p>
-							</div>
-              <SignupForm 
-                initialCreate={this.state.authenticatedUser} 
-                onChange={this.changeLogin}
-              />
-            </div>
-            <div className="login">
+ 				    <div className="header">
+							 <h2>Find Me Uni</h2>
+						</div>
+						<div className="website-blurb">
+							 <p> Search through our catalogue of schools and find the unversity that's right for you</p>
+						</div>
+						<div className="login">
               <LoginForm 
                 initalLoginCheck={this.state.authenticatedUser} 
                 onChange={this.changeLogin}
               />
+            <div className="signup"> 
+              <SignupForm 
+                initialCreate={this.state.authenticatedUser} 
+                onChange={this.changeLogin}
+              />
+            		</div>
               </div>
           </div>
 			)
@@ -104,14 +104,16 @@ var LoginForm = React.createClass({
 				<div className="login-form">
 				<h3>Login In </h3>
 				<form onSubmit={this.handleSubmit}>
-				<label htmlFor="username">username</label>
 				<input className="username-login-form" 
-				type="text" value={this.state.username} 
+				type="text" 
+				placeholder="Email"
+				value={this.state.username} 
 				onChange={this.handleLoginFormChange.bind(this,'username')}/>
 				<br/>
-				<label htmlFor="password">password</label>
 				<input className="password-login-form" 
-				type="text" value={this.state.password} 
+				type="text" 
+				placeholder="password"
+				value={this.state.password} 
 				onChange={this.handleLoginFormChange.bind(this,'password')}/>
 				<br/>
 				<input type="submit"/>
@@ -174,24 +176,29 @@ var SignupForm = React.createClass({
 				<div className="signup-form">
 				<h3>Create Account </h3>
 				<form onSubmit={this.handleSubmit}>
-				<label htmlFor="firstName">First name</label>
+
 				<input className="firstName-login-form" 
-				type="text" value={this.state.firstName} 
+				type="text" 
+				placeholder="First name"
+				value={this.state.firstName} 
 				onChange={this.handleLoginFormChange.bind(this,'firstName')}/>
 				<br/>
-				<label htmlFor="lastName">Last name</label>
 				<input className="lastName-login-form" 
-				type="text" value={this.state.lastName} 
+				type="text"
+				placeholder="Last name" 
+				value={this.state.lastName} 
 				onChange={this.handleLoginFormChange.bind(this,'lastName')}/>
 				<br/>
-				<label htmlFor="username">username</label>
 				<input className="username-login-form" 
-				type="text" value={this.state.username} 
+				type="text" 
+				placeholder="Email Address"
+				value={this.state.username} 
 				onChange={this.handleLoginFormChange.bind(this,'username')}/>
 				<br/>
-				<label htmlFor="password">password</label>
 				<input className="password-login-form" 
-				type="text" value={this.state.password} 
+				type="text" 
+				placeholder="password"
+				value={this.state.password} 
 				onChange={this.handleLoginFormChange.bind(this,'password')}/>
 				<br/>
 				<input type="submit"/>
@@ -218,23 +225,24 @@ var Homepage = React.createClass({
 	//for entering in schools. this will push scores into the array for searching via the API
 	submitRequest: function(e){
 		e.preventDefault();
-		console.log("let's get that get")
-			$.ajax({
-				url: '/users/search',
-				method: 'GET',
-				data: {
-					act25: this.state.act25,
-					sat25: this.state.sat25
-				},
+		$.ajax({
+			url: '/users/search',
+			method: 'GET',
+			data: {
+				act25: this.state.act25,
+				sat25: this.state.sat25
+			},
 			success: function(data) {
 				console.log(data);
-				// this.props.getShowResults();
 				// this.handleResults(data.hits);
 			}.bind(this),   // ensuring that the object being returned is the object being fed into the application
 			error: function(xhr, status, err) {
 				console.error(status, err.toString());
 			}.bind(this),
 		});
+	},
+	componentDidMount: function() {
+		this.submitRequest;
 	},
 	//get college results
 	getShowResults: function(){
@@ -273,18 +281,132 @@ var Homepage = React.createClass({
 					/>
 					<button type="submit">Search</button>
 				</form>
+				<SchoolsList/>
 			</div>
 			);
 	}
 });
 
-// var SchoolsList = React.createClass({
-// 	getInitialState: function(){
-// 		return({results: [] })
+var SchoolsList = React.createClass({
+	render: function(){
+		return(
+			<div className="schools-results">
+				<div className="your-results">
+					<h1> Schools that match your results</h1>
+				</div>
+				<ul>
+				<li>{this.props.getShowResults}</li>
+				</ul>
+			</div>
+			);
+	}
+});
+
+// var Homepage = React.createClass({
+// 	getInitialState: function() {
+// 		return {
+// 			//scores array are the scores users will enter
+// 			act25: "",
+// 			sat25: "",
+// 			showResults: []
+// 		};
 // 	},
-// 	handleResults: function(schoolData){
-// 		var schoolResults = {this.props.}
+// 	//for entering in schools. this will push scores into the array for searching via the API
+// 	submitRequest: function(e){
+// 		e.preventDefault();
+// 		console.log("let's get that get")
+// 			$.ajax({
+// 				url: '/users/search',
+// 				method: 'GET',
+// 				// data: {
+// 				// 	act25: this.state.act25,
+// 				// 	sat25: this.state.sat25
+// 				// },
+// 			success: function(data) {
+// 				this.setState({showResults: data})
+// 				console.log(data);
+// 				// this.props.showResults();
+// 				// this.handleResults(data.hits);
+// 			}.bind(this),   // ensuring that the object being returned is the object being fed into the application
+// 			error: function(xhr, status, err) {
+// 				console.error(status, err.toString());
+// 			}.bind(this),
+// 		});
+// 	},
+// 	componentDidMount: function() {
+// 		var data = this.getData();
+// 		this.setState({data : data})
+// 	},
+// 	//get college results
+// 	// getShowResults: function(){
+//  //    this.setState({showResults: !this.state.showResults});
+//  //  },
+//   handleActChange: function(e) {
+// 	  this.setState({ act25: e.target.value });
+//   },
+//   handleSatChange: function(e) {
+// 	  this.setState({ sat25: e.target.value });
+//   },
+// 	render: function(){
+// 		return(
+// 			//hide user profile when on the homepage
+// 			<div>
+// 				<h1>
+// 					Enter your score
+// 				</h1>
+// 				<form className="searchSchoolsForm" onSubmit={this.submitRequest}>
+// 					<label for="act">Act</label>
+// 					<input
+// 						className="actScore"
+// 						type="text"
+// 						name="act"
+// 						placeholder="ACT score"
+// 						value={this.state.act25}
+// 						onChange={this.handleActChange}
+// 					/>
+// 					<input
+// 						className="actScore"
+// 						type="text"
+// 						name="sat"
+// 						placeholder="SAT score"
+// 						value={this.state.sat25}
+// 						onChange={this.handleSatChange}
+// 					/>
+// 					<button type="submit">Search</button>
+// 				</form>
+// 				<div className="schoolsList"
+// 				submitRequest={this.submitRequest}
+// 				/>
+// 				<div className="results-ya">
+// 				{data}
+// 				</div>
+// 			</div>
+// 			);
 // 	}
+// });
+
+// var SchoolsList = React.createClass({
+// 	render: function(){
+// 		return(
+// 			<div className="schools-results">
+// 				<div className="your-results">
+// 					<h1> Schools that match your results</h1>
+// 				</div>
+
+// 				submitRequest={this.props.submitRequest}
+// 			</div>
+// 			);
+// 	}
+// });
+
+
+// var SchoolsList = React.createClass({
+// 	// getInitialState: function(){
+// 	// 	return({results: [] })
+// 	// },
+// 	// handleResults: function(schoolData){
+// 	// 	var schoolResults = {this.props.}
+// 	// }
 // 	// getSchools: function(data){
 // 	// 	console.log("about to get schools")
 // 	// 	$.ajax({
@@ -306,11 +428,11 @@ var Homepage = React.createClass({
 // 	render: function(){
 // 		return(
 // 			<div className="results">
-// 				<h3>{data.result.act25}</h3>
+// 				<h3>{this.props.submitRequest}</h3>
 // 			</div>
-// 			)
+// 			);
 // 	}
-// })
+// });
 
 // var Homepage = React.createClass({
 // 	getInitialState: function(){
