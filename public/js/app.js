@@ -298,7 +298,6 @@ var SchoolList = React.createClass({
 				<h1>{school.name}</h1>
 					<p>{school.act25}</p>
 					<p>{school.sat25}</p>	
-				</div>
 			</li>
 			);
 		});
