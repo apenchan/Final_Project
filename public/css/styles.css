@@ -6,9 +6,10 @@
 	font-family: "LANENAR.ttf";
 	src: url(../fonts/LANENAR.ttf);
 }
-.forms{
+/*.forms{
 	background-image: url("http://bit.ly/2aewftY");
-}
+	position: fixed;
+}*/
 h2{
 	font-family: "ChampagneLimousines.ttf";
 	font-size: 40px;
