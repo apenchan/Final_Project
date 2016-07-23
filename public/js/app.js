@@ -33,13 +33,14 @@ var ApplicationDisplay = React.createClass({
 					)
 		} else {
 		return (
- 				<div className="forms">
+			<div className="front-page">
  				    <div className="header">
 							 <h2>Find Me Uni</h2>
 						</div>
 						<div className="website-blurb">
 							 <p> Search through our catalogue of schools and find the unversity that's right for you</p>
 						</div>
+						<div className="forms">
 						<div className="login">
               <LoginForm 
                 initalLoginCheck={this.state.authenticatedUser} 
@@ -50,6 +51,7 @@ var ApplicationDisplay = React.createClass({
                 initialCreate={this.state.authenticatedUser} 
                 onChange={this.changeLogin}
               />
+              		</div>
             		</div>
               </div>
           </div>
@@ -102,7 +104,7 @@ var LoginForm = React.createClass({
 		return(
 			<div className="login">
 				<div className="login-form">
-				<h3>Login In </h3>
+				<h3>Login </h3>
 				<form onSubmit={this.handleSubmit}>
 				<input className="username-login-form" 
 				type="text" 
