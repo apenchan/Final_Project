@@ -314,6 +314,7 @@ var SchoolList = React.createClass({
 	}
 });
 
+
 // var Homepage = React.createClass({
 // 	getInitialState: function(){
 // 		return{
