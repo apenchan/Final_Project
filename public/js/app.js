@@ -38,7 +38,7 @@ var ApplicationDisplay = React.createClass({
 							 <h2>Find Me Uni</h2>
 						</div>
 						<div className="website-blurb">
-							 <p> Search through our catalogue of schools and find the unversity that's right for you</p>
+							 Search through our catalogue of schools and find the unversity that's right for you
 						</div>
 						<div className="forms">
 						<div className="login">
@@ -313,7 +313,6 @@ var SchoolList = React.createClass({
 					<div className="top-act"> {school.act25}</div>
 					<p>What 25% of students scored on the SAT:</p>
 					<div className="top-sat"> {school.sat25}</div>	
-					<SaveSchoolBtn/>
 			</li>
 			);
 		});
@@ -328,38 +327,38 @@ var SchoolList = React.createClass({
 	}
 });
 
-var SaveSchoolBtn = React.createClass({
-	addSchool: function(data){
-		console.log("save school button clicked");
-		$.ajax({
-			url: 'users/profile',
-			method: 'PUT',
-			data: {
-				act25: data.act25,
-				sat25: data.sat25,
-				name: data.name
-			},
-			success: function(data){
-				console.log("saving schools");
-				console.log(data);
-			}.bind(this),
-			error: function(xhr, status, err){
-				console.error(status, err.toString())
-			}.bind(this)
-		})
-	},
-	render: function(){
-		var self = this;
-		var click = function(){
-			self.addSchool();
-		};
-		return(
-			<div>
-			<button type="button" onClick={click} className="add-school">Add School</button>
-			</div>
-			);
-	}
-});
+// var SaveSchoolBtn = React.createClass({
+// 	addSchool: function(data){
+// 		console.log("save school button clicked");
+// 		$.ajax({
+// 			url: 'users/profile',
+// 			method: 'PUT',
+// 			data: {
+// 				act25: data.act25,
+// 				sat25: data.sat25,
+// 				name: data.name
+// 			},
+// 			success: function(data){
+// 				console.log("saving schools");
+// 				console.log(data);
+// 			}.bind(this),
+// 			error: function(xhr, status, err){
+// 				console.error(status, err.toString())
+// 			}.bind(this)
+// 		})
+// 	},
+// 	render: function(){
+// 		var self = this;
+// 		var click = function(){
+// 			self.addSchool();
+// 		};
+// 		return(
+// 			<div>
+// 			<button type="button" onClick={click} className="add-school">Add School</button>
+// 			</div>
+// 			);
+// 	}
+// });
 
 // var Homepage = React.createClass({
 // 	getInitialState: function(){

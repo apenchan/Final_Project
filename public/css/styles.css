@@ -39,10 +39,9 @@ body{
   background-repeat: no-repeat;
   padding: 10px;
 }
-
-.website-blurb{
+.website-blurb {
 	font-family: "LANENAR.ttf";
-	font-size: 20px;
+	font-size: 25px;
 	text-align: center;
 }
 .login{
