@@ -28,7 +28,7 @@ var ApplicationDisplay = React.createClass({
 		if(this.state.authenticatedUser === true){
 			return (
 				<div>
-					<Homepage/>
+					<Homepage logout={this.handleReset}/>
 				</div>
 					)
 		} else {
@@ -219,7 +219,8 @@ var Homepage = React.createClass({
 			act25: "",
 			sat25: "",
 			showResults: false,
-			schools: []
+			schools: [],
+			savedSchools: []
 		};
 	},
 	componentDidMount: function() {
@@ -234,6 +235,10 @@ var Homepage = React.createClass({
   },
   handleSatChange: function(e) {
 	  this.setState({ sat25: e.target.value });
+  },
+  handleLogout: function(){
+  	Cookies.remove('jwt_token');
+  	this.props.logout();
   },
 	//for entering in schools. this will push scores into the array for searching via the API
 	submitRequest: function(e){
@@ -259,12 +264,12 @@ var Homepage = React.createClass({
 	render: function(){
 		return(
 			//hide user profile when on the homepage
-			<div>
-				<h1>
-					Enter your score
-				</h1>
+			<div className="homepage">
+				<button className="logout" onClick={this.handleLogout}> Logout </button>
+				<div className="enter-score">
+				<h1>	Enter your score </h1>
+				</div>
 				<form className="searchSchoolsForm" onSubmit={this.submitRequest}>
-					<label for="act">Act</label>
 					<input
 						className="actScore"
 						type="text"
@@ -274,14 +279,16 @@ var Homepage = React.createClass({
 						onChange={this.handleActChange}
 					/>
 					<input
-						className="actScore"
+						className="satScore"
 						type="text"
 						name="sat"
 						placeholder="SAT score"
 						value={this.state.sat25}
 						onChange={this.handleSatChange}
 					/>
+					<div className="submit-scores">
 					<button type="submit">Search</button>
+					</div>
 				</form>
 				<SchoolList schools={this.state.schools}/>
 			</div>
@@ -294,18 +301,25 @@ var SchoolList = React.createClass({
 		// var resultItems = this.props.getResults.map(function(result){
 		console.log(this.props);
 		//map through the results below
-		var schoolNodes =  this.props.schools.map(function(school){
+		var schoolNodes = this.props.schools.map(function(school){
+			console.log("I git this");
+			var click = function(){
+			self.addSchool(school);
+		};
 			return(
 			<li>
-				<h1>{school.name}</h1>
-					<p>{school.act25}</p>
-					<p>{school.sat25}</p>	
+				<h2>{school.name}</h2>
+					<p>What 25% of students scored on the ACT:</p>
+					<div className="top-act"> {school.act25}</div>
+					<p>What 25% of students scored on the SAT:</p>
+					<div className="top-sat"> {school.sat25}</div>	
+					<SaveSchoolBtn/>
 			</li>
 			);
 		});
 		return(
 			<div className="results">
-				<h1> Results yo</h1>
+				<h1> Your Matches Below! </h1>
 				<ul>
 				{schoolNodes}
 				</ul>
@@ -314,6 +328,38 @@ var SchoolList = React.createClass({
 	}
 });
 
+var SaveSchoolBtn = React.createClass({
+	addSchool: function(data){
+		console.log("save school button clicked");
+		$.ajax({
+			url: 'users/profile',
+			method: 'PUT',
+			data: {
+				act25: data.act25,
+				sat25: data.sat25,
+				name: data.name
+			},
+			success: function(data){
+				console.log("saving schools");
+				console.log(data);
+			}.bind(this),
+			error: function(xhr, status, err){
+				console.error(status, err.toString())
+			}.bind(this)
+		})
+	},
+	render: function(){
+		var self = this;
+		var click = function(){
+			self.addSchool();
+		};
+		return(
+			<div>
+			<button type="button" onClick={click} className="add-school">Add School</button>
+			</div>
+			);
+	}
+});
 
 // var Homepage = React.createClass({
 // 	getInitialState: function(){

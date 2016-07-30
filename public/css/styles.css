@@ -6,6 +6,14 @@
 	font-family: "LANENAR.ttf";
 	src: url(../fonts/LANENAR.ttf);
 }
+@font-face {
+	font-family: "GravityBold.otf";
+	src: url(../fonts/GravityBold.otf);
+}
+@font-face{
+	font-family: "OldSansBlack";
+	src: url(../fonts/OldSansBlack.ttf);
+}
 html{
 	margin: 0px;
 	padding: 0px;
@@ -22,16 +30,16 @@ body{
 	text-align: center;
 }
 .front-page{
-/*	background-image: url('http://bit.ly/2aewftY');
-/*	background-size: 100%;*/
+	background-image: url('http://bit.ly/2aewftY');
 /*	-webkit-background-size: cover;
   -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: 100% auto;
-  position: absolute;
-  min-height: 100%;
-  width: 100%;*/
+  -o-background-size: cover;*/
+  background-size: cover;
+  height: 100vh;
+  background-repeat: no-repeat;
+  padding: 10px;
 }
+
 .website-blurb{
 	font-family: "LANENAR.ttf";
 	font-size: 20px;
@@ -43,13 +51,13 @@ body{
 }
 .forms{
 	font-size: 20px;
-	width: 100%;
-	height: 100%;
+/*	width: 100%;
+	height: 100%;*/
 	text-align: center;
 }
 .login-form{
 	margin-left: 100px;
-/*	display: inline-block;*/
+	/*display: inline-block;*/
 	width: 60%;
 	position: fixed;
 }
@@ -58,10 +66,60 @@ body{
 	font-size: 20px;
 	width: 100%;
 	height: 100%;
-	/*display: inline-block;*/
+	display: inline-block;
 	text-align: center;
 }
 .signup-form{
 	margin-left: 100px;
 	display: inline-block;
+}
+.enter-score{
+	font-family: "GravityBold.otf";
+	font-size: 30px;
+	margin-left: 10px;
+}
+.searchSchoolsForm{
+	margin-left: 20px;
+	font-size: 20px;
+	display: table-caption;
+}
+.actScore, .satScore{
+	height: 25px;
+	width: 150px;
+}
+.submit-scores{
+	padding: 5px;
+}
+.results{
+	text-align: center;
+}
+h1{
+	font-family: "LANENAR.ttf";
+	font-size: 45px;
+}
+li {
+	list-style-type: none;
+}
+.logout{
+	float: right;
+	padding: 10px;
+	margin: 40px;
+	font-size: 20px;
+	font-family: "LANENAR.ttf";
+}
+h2 {
+	font-family: "OldSansBlack";
+	font-size: 25px;
+}
+p{
+	font-family: "ChampagneLimousines.ttf";
+	font-size: 18px;
+}
+.top-act:hover{
+	color: red;
+	font-size: 30px;
+}
+.top-sat:hover{
+	color: blue;
+	font-size: 30px;
 }

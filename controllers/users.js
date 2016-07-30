@@ -45,4 +45,19 @@ router.get('/profile', function(req, res, next){
 	}); 
 });
 
+router.put('/profile', function(req, res){
+	User.findById(req.user._id).then(function(user){
+		var school = new School(req.body);
+		user.savedSchools.push(school);
+		user.save(function(err){
+			if(err){
+				console.log(err);
+				res.send(false);
+			} else {
+				res.send(user);
+			}
+		});
+	});
+});
+
 module.exports = router;
