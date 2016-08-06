@@ -1,6 +1,10 @@
 {
   "name": "Final_Project",
   "version": "1.0.0",
+  "engines": {
+    "node": "4.4.4",
+     "npm": "3.9"
+  },
   "description": "",
   "main": "server.js",
   "scripts": {
