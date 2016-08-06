@@ -3,6 +3,7 @@ var app = express();
 var morgan = require('morgan');
 var mongoose = require('mongoose');
 var bodyParser = require ('body-parser');
+var db = process.env.MONGODB_URI || "mongodb://localhost/find_me_uni";
 var methodOverride = require('method-override');
 var cookieParser = require('cookie-parser');
 var port = process.env.PORT || 3000;
@@ -22,7 +23,6 @@ app.use(methodOverride(function(req, res){
 app.use(cookieParser());
 
 //DB
-var db = process.env.MONGODB_URI || "mongodb://localhost/find_me_uni";
 mongoose.connect(db);
 
 //Controllers
