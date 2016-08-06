@@ -129,11 +129,11 @@ var LoginForm = React.createClass({
 var SignupForm = React.createClass({
 	getInitialState: function() {
 		return{
-			firstName: this.props.initialLoginCheck,
-			lastName: this.props.initialLoginCheck,
-			username: this.props.initialLoginCheck,
-			password: this.props.initialLoginCheck,
-			loginStatis: this.props.initialLoginCheck
+			firstName: this.props.initialCreate,
+			lastName: this.props.initialCreate,
+			username: this.props.initialCreate,
+			password: this.props.initialCreate,
+			loginStatis: this.props.initialCreate
 		};
 	},
 	handleLoginFormChange: function(stateName, e) {
