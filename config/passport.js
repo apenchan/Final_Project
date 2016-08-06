@@ -14,7 +14,9 @@ JwtOpts.jwtFromRequest = function(req) {
   return token;
 };
 
-JwtOpts.secretOrKey = process.env.JWT_SECRET;
+//Remove this before deploy
+// JwtOpts.secretOrKey = process.env.JWT_SECRET;
+JwtOpts.secretOrKey = "c7645930211dogheart4"
 
 passport.use(new JwtStrategy(JwtOpts, function(jwt_payload, done) {
     console.log( "JWT PAYLOAD" + util.inspect(jwt_payload));
