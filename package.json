@@ -1,5 +1,5 @@
 {
-  "name": "Final_Project",
+  "name": "final-project",
   "version": "1.0.0",
   "engines": {
     "node": "4.4.4",
@@ -13,14 +13,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/apenchan/Final_Project.git"
+    "url": "https://github.com/apenchan/final-project.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/apenchan/Final_Project/issues"
+    "url": "https://github.com/apenchan/final-project/issues"
   },
-  "homepage": "https://github.com/apenchan/Final_Project#readme",
+  "homepage": "https://github.com/apenchan/final-project#readme",
   "dependencies": {
     "bcryptjs": "^2.3.0",
     "body-parser": "^1.15.2",
