@@ -14,7 +14,7 @@ router.post('/register', function (req, res){
 	User.create(req.body, function(err, user){
 		if (err) {
 			console.log(err)
-			res.send(500).end();
+			res.status(500).end();
 		}
 		res.send(true);
 	});
