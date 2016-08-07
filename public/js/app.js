@@ -133,10 +133,10 @@ var SignupForm = React.createClass({
 			lastName: this.props.initialCreate,
 			username: this.props.initialCreate,
 			password: this.props.initialCreate,
-			loginStatis: this.props.initialCreate
+			loginStatus: this.props.initialCreate
 		};
 	},
-	handleLoginFormChange: function(stateName, e) {
+	handleSignupFormChange: function(stateName, e) {
 		var change= {};
 		change[stateName] = e.target.value;
 		this.setState(change);
@@ -183,25 +183,25 @@ var SignupForm = React.createClass({
 				type="text" 
 				placeholder="First name"
 				value={this.state.firstName} 
-				onChange={this.handleLoginFormChange.bind(this,'firstName')}/>
+				onChange={this.handleSignupFormChange.bind(this,'firstName')}/>
 				<br/>
 				<input className="lastName-login-form" 
 				type="text"
 				placeholder="Last name" 
 				value={this.state.lastName} 
-				onChange={this.handleLoginFormChange.bind(this,'lastName')}/>
+				onChange={this.handleSignupFormChange.bind(this,'lastName')}/>
 				<br/>
 				<input className="username-login-form" 
 				type="text" 
 				placeholder="Email Address"
 				value={this.state.username} 
-				onChange={this.handleLoginFormChange.bind(this,'username')}/>
+				onChange={this.handleSignupFormChange.bind(this,'username')}/>
 				<br/>
 				<input className="password-login-form" 
 				type="text" 
 				placeholder="password"
 				value={this.state.password} 
-				onChange={this.handleLoginFormChange.bind(this,'password')}/>
+				onChange={this.handleSignupFormChange.bind(this,'password')}/>
 				<br/>
 				<input type="submit"/>
 				</form>

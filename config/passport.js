@@ -18,8 +18,8 @@ JwtOpts.jwtFromRequest = function(req) {
 // JwtOpts.secretOrKey = process.env.JWT_SECRET;
 JwtOpts.secretOrKey = "c7645930211dogheart4"
 
-var myEnv = process.env
-var myKey = process.env.JWT_SECRET;
+// var myEnv = process.env
+// var myKey = process.env.JWT_SECRET;
 
 
 passport.use(new JwtStrategy(JwtOpts, function(jwt_payload, done) {

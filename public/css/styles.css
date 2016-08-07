@@ -54,12 +54,12 @@ body{
 	height: 100%;*/
 	text-align: center;
 }
-.login-form{
-	margin-left: 100px;
+/*.login-form{
+	margin-left: 100px;*/
 	/*display: inline-block;*/
-	width: 60%;
+/*	width: 60%;
 	position: fixed;
-}
+}*/
 .signup{
 	font-family: "ChampagneLimousines.ttf";
 	font-size: 20px;
@@ -68,10 +68,10 @@ body{
 	display: inline-block;
 	text-align: center;
 }
-.signup-form{
+/*.signup-form{
 	margin-left: 100px;
 	display: inline-block;
-}
+}*/
 .enter-score{
 	font-family: "GravityBold.otf";
 	font-size: 30px;
